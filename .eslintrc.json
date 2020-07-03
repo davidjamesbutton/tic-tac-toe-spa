@@ -18,6 +18,10 @@
     "plugins": [
         "react"
     ],
+    "ignorePatterns": [
+        "**/*.svg",
+        "**/*.css"
+    ],
     "rules": {
     }
 }
