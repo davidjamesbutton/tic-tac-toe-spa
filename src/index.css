@@ -1,5 +1,19 @@
 body {
-  margin: 20px;
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h1, .info-wrapper {
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 .board {
@@ -11,11 +25,22 @@ body {
   width: 500px;
 }
 
+.info-wrapper button {
+  background: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  outline: none;
+  padding: 1rem;
+}
+
 .square {
   background: white;
   border: none;
   cursor: pointer;
   font-size: 6rem;
+  font-weight: 800;
   outline: none;
 }
 

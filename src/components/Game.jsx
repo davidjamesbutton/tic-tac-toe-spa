@@ -39,12 +39,14 @@ const Game = () => {
   );
 
   return (
-    <div>
+    <>
       <h1>Tic Tac Toe</h1>
-      {gameFeedback}
       {gameBoard}
-      {resetGameButton}
-    </div>
+      <div className="info-wrapper">
+        <h3>{gameFeedback}</h3>
+        {resetGameButton}
+      </div>
+    </>
   );
 };
 
