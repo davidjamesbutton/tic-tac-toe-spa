@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Square = (props) => {
-  const { value } = props;
+  const { value, onClick } = props;
+
+  const className = value
+    ? `square square-${value.toLowerCase()}`
+    : 'square';
 
   return (
     <button
       type="button"
-      className="square"
-      onClick={() => props.onClick()}
+      className={className}
+      onClick={onClick}
     >
       {value}
     </button>
@@ -17,11 +21,12 @@ const Square = (props) => {
 
 Square.defaultProps = {
   value: null,
+  onClick: () => null,
 };
 
 Square.propTypes = {
   value: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Square;
