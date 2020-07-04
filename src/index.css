@@ -2,35 +2,27 @@ body {
   margin: 20px;
 }
 
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
+.board {
+  background: black;
+  display: grid;
+  gap: 1rem;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  height: 500px;
+  width: 500px;
 }
 
-.square-x {
-  color: red;
+.square {
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 6rem;
+  outline: none;
 }
 
 .square-o {
   color: blue;
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.square:focus {
-  outline: none;
+.square-x {
+  color: red;
 }
