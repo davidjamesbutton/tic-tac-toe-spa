@@ -38,10 +38,13 @@ h3 {
 .square {
   background: white;
   border: none;
-  cursor: pointer;
   font-size: 6rem;
   font-weight: 800;
   outline: none;
+}
+
+.square-empty {
+  cursor: pointer;
 }
 
 .square-o {

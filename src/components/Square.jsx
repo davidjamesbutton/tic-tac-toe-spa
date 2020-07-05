@@ -6,7 +6,7 @@ const Square = (props) => {
 
   const className = value
     ? `square square-${value.toLowerCase()}`
-    : 'square';
+    : 'square square-empty';
 
   return (
     <button
