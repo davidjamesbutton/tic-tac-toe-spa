@@ -35,6 +35,10 @@ h3 {
   padding: 1rem;
 }
 
+.mr-1 {
+  margin-right: 0.5rem;
+}
+
 .square {
   background: white;
   border: none;

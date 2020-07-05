@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import Board from './Board';
 import calculateWinner from '../utils/gameUtils';
 import getAiMove from '../utils/aiUtil';
+import randomChoice from '../utils/randomUtils';
 
 const Game = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const [oIsHuman, setOIsHuman] = useState(true);
 
   const resetGame = () => {
     setSquares(Array(9).fill(null));
-    setXIsNext(true);
+    setXIsNext(randomChoice([true, false]));
   };
 
   const playMove = (player, moveIndex) => {
@@ -33,6 +35,10 @@ const Game = () => {
     playMove(player, move);
   };
 
+  if (!xIsNext && !oIsHuman) {
+    playAiMove();
+  }
+
   const winner = calculateWinner(squares);
 
   const gameFeedback = winner
@@ -47,12 +53,22 @@ const Game = () => {
   );
 
   const resetGameButton = (
-    <button type="button" onClick={resetGame}>Reset</button>
+    <button type="button" className="mr-1" onClick={resetGame}>
+      Reset
+    </button>
   );
 
   const playAiMoveButton = (
-    <button type="button" onClick={playAiMove}>
+    <button type="button" className="mr-1" onClick={playAiMove}>
       Play AI Move
+    </button>
+  );
+
+  const playerOChangeButton = (
+    <button type="button" onClick={() => setOIsHuman(!oIsHuman)}>
+      Player O:
+      {' '}
+      {oIsHuman ? 'Human' : 'AI'}
     </button>
   );
 
@@ -64,6 +80,7 @@ const Game = () => {
         <h3>{gameFeedback}</h3>
         {resetGameButton}
         {playAiMoveButton}
+        {playerOChangeButton}
       </div>
     </>
   );
