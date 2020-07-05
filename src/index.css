@@ -47,6 +47,10 @@ h3 {
   cursor: pointer;
 }
 
+.square-empty:hover {
+  background: #eee
+}
+
 .square-o {
   color: blue;
 }
