@@ -1,59 +1,61 @@
 /* eslint-disable no-param-reassign */
 import calculateWinner from './gameUtils';
+import randomChoice from './randomUtils';
 
 const getPossibleMoves = (squares) => {
-  const moveIndexes = [];
+  const moves = [];
   squares.forEach((value, index) => {
     if (value === null) {
-      moveIndexes.push(index);
+      moves.push(index);
     }
   });
-  return moveIndexes;
+  return moves;
 };
 
 const minimax = (squares, maximizingPlayer, currentPlayer) => {
   const winner = calculateWinner(squares);
   if (winner !== null) {
-    return winner === maximizingPlayer
-      ? [null, 1]
-      : [null, -1];
+    const score = winner === maximizingPlayer ? 1 : -1;
+    return { score, moves: [] };
   }
 
   const possibleMoves = getPossibleMoves(squares);
   if (possibleMoves.length === 0) {
-    return [null, 0];
+    return { score: 0, moves: [] };
   }
 
-  const nextPlayer = currentPlayer === 'X'
-    ? 'O'
-    : 'X';
+  const nextPlayer = currentPlayer === 'X' ? 'O' : 'X';
 
-  let bestMove = null;
-  let bestScore = currentPlayer === maximizingPlayer
-    ? -Infinity
-    : Infinity;
+  const isMaximizing = currentPlayer === maximizingPlayer;
+  const initialScore = isMaximizing ? -Infinity : Infinity;
+  const result = { score: initialScore, moves: [] };
 
   possibleMoves.forEach((move) => {
     squares[move] = currentPlayer;
-    const [returnMove, returnScore] = minimax(squares, maximizingPlayer, nextPlayer);
+    const { score: childScore } = minimax(squares, maximizingPlayer, nextPlayer);
     squares[move] = null;
-    if (currentPlayer === maximizingPlayer) {
-      if (returnScore > bestScore) {
-        bestScore = returnScore;
-        bestMove = move;
+
+    if (childScore > result.score) {
+      if (isMaximizing) {
+        result.score = childScore;
+        result.moves = [move];
       }
-    } else if (returnScore < bestScore) {
-      bestScore = returnScore;
-      bestMove = move;
+    } else if (childScore < result.score) {
+      if (!isMaximizing) {
+        result.score = childScore;
+        result.moves = [move];
+      }
+    } else { // childScore === result.score
+      result.moves.push(move);
     }
   });
 
-  return [bestMove, bestScore];
+  return result;
 };
 
 const getAiMove = (squares, player) => {
-  const [move, score] = minimax(squares, player, player);
-  return move;
+  const { moves } = minimax(squares, player, player);
+  return randomChoice(moves);
 };
 
 export default getAiMove;
