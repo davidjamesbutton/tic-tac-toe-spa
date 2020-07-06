@@ -1,4 +1,4 @@
-name: Continuous Deployment
+name: Continuous deployment workflow
 
 on:
   push:
@@ -7,11 +7,12 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Deployment job
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Install
+      - name: Install dependencies
         run: npm install
-      
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
