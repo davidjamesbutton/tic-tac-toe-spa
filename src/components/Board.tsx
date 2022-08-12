@@ -1,8 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Square from './Square';
 
-function Board(props) {
+interface BoardProps {
+  squares: ('X'|'O'|null)[],
+  handleSquareClick: (i: number) => void
+}
+
+function Board(props: BoardProps) {
   const {
     squares,
     handleSquareClick,
@@ -12,7 +16,6 @@ function Board(props) {
     <div className="board">
       {squares.map((square, index) => (
         <Square
-          // eslint-disable-next-line react/no-array-index-key
           key={`square-${index}`}
           value={square}
           onClick={() => handleSquareClick(index)}
@@ -21,10 +24,5 @@ function Board(props) {
     </div>
   );
 }
-
-Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleSquareClick: PropTypes.func.isRequired,
-};
 
 export default Board;

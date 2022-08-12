@@ -2,8 +2,8 @@
 import calculateWinner from './gameUtils';
 import randomChoice from './randomUtils';
 
-const getPossibleMoves = (squares) => {
-  const moves = [];
+const getPossibleMoves = (squares: ('X'|'O'|null)[]): number[] => {
+  const moves: number[] = [];
   squares.forEach((value, index) => {
     if (value === null) {
       moves.push(index);
@@ -12,7 +12,7 @@ const getPossibleMoves = (squares) => {
   return moves;
 };
 
-const minimax = (squares, maximizingPlayer, currentPlayer) => {
+const minimax = (squares: ('X'|'O'|null)[], maximizingPlayer: 'X'|'O', currentPlayer: 'X'|'O'): { score: number, moves: number[] } => {
   const winner = calculateWinner(squares);
   if (winner !== null) {
     const score = winner === maximizingPlayer ? 1 : -1;
@@ -28,7 +28,7 @@ const minimax = (squares, maximizingPlayer, currentPlayer) => {
 
   const isMaximizing = currentPlayer === maximizingPlayer;
   const initialScore = isMaximizing ? -Infinity : Infinity;
-  const result = { score: initialScore, moves: [] };
+  const result: { score: number, moves: number[] } = { score: initialScore, moves: [] };
 
   possibleMoves.forEach((move) => {
     squares[move] = currentPlayer;
@@ -53,7 +53,7 @@ const minimax = (squares, maximizingPlayer, currentPlayer) => {
   return result;
 };
 
-const getAiMove = (squares, player) => {
+const getAiMove = (squares: ('X'|'O'|null)[], player: 'X'|'O'): number => {
   const { moves } = minimax(squares, player, player);
   return randomChoice(moves);
 };

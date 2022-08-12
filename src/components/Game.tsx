@@ -5,7 +5,7 @@ import getAiMove from '../utils/aiUtil';
 import randomChoice from '../utils/randomUtils';
 
 function Game() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [squares, setSquares] = useState<('X'|'O'|null)[]>(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const [oIsHuman, setOIsHuman] = useState(true);
 
@@ -14,14 +14,14 @@ function Game() {
     setXIsNext(randomChoice([true, false]));
   };
 
-  const playMove = (player, moveIndex) => {
+  const playMove = (player: 'X' | 'O', moveIndex: number) => {
     const newSquares = squares.slice();
     newSquares[moveIndex] = player;
     setSquares(newSquares);
     setXIsNext(!xIsNext);
   };
 
-  const handleSquareClick = (i) => {
+  const handleSquareClick = (i: number) => {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }

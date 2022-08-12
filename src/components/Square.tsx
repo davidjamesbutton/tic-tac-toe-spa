@@ -1,7 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function Square(props) {
+interface SquareProps {
+  value: 'X'|'O'|null,
+  onClick: () => void
+}
+
+function Square(props: SquareProps) {
   const { value, onClick } = props;
 
   const className = value
@@ -18,15 +22,5 @@ function Square(props) {
     </button>
   );
 }
-
-Square.defaultProps = {
-  value: null,
-  onClick: () => null,
-};
-
-Square.propTypes = {
-  value: PropTypes.string,
-  onClick: PropTypes.func,
-};
 
 export default Square;
