@@ -58,12 +58,6 @@ function Game() {
     </button>
   );
 
-  const playAiMoveButton = (
-    <button type="button" className="mr-1" onClick={playAiMove}>
-      Play AI Move
-    </button>
-  );
-
   const playerOChangeButton = (
     <button type="button" onClick={() => setOIsHuman(!oIsHuman)}>
       Player O:
@@ -79,7 +73,6 @@ function Game() {
       <div className="info-wrapper">
         <h3>{gameFeedback}</h3>
         {resetGameButton}
-        {playAiMoveButton}
         {playerOChangeButton}
       </div>
     </>
