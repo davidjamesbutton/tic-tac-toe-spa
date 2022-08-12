@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Square from './Square';
 
-const Board = (props) => {
+function Board(props) {
   const {
     squares,
     handleSquareClick,
@@ -20,7 +20,7 @@ const Board = (props) => {
       ))}
     </div>
   );
-};
+}
 
 Board.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string).isRequired,

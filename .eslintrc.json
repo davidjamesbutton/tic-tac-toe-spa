@@ -23,5 +23,6 @@
         "**/*.css"
     ],
     "rules": {
+        "linebreak-style": "off"
     }
 }

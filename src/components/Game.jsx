@@ -4,7 +4,7 @@ import calculateWinner from '../utils/gameUtils';
 import getAiMove from '../utils/aiUtil';
 import randomChoice from '../utils/randomUtils';
 
-const Game = () => {
+function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const [oIsHuman, setOIsHuman] = useState(true);
@@ -84,6 +84,6 @@ const Game = () => {
       </div>
     </>
   );
-};
+}
 
 export default Game;

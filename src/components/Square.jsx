@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Square = (props) => {
+function Square(props) {
   const { value, onClick } = props;
 
   const className = value
@@ -17,7 +17,7 @@ const Square = (props) => {
       {value}
     </button>
   );
-};
+}
 
 Square.defaultProps = {
   value: null,

@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import Game from './components/Game';
+import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Game />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<Game />);
